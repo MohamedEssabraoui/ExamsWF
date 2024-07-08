@@ -71,6 +71,12 @@ app.use((err, req, res, next)=>{
     });
 });
 
+//production script
+app.use(express.static("../frontend/build"));
+
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname,'frontend', 'build', 'index.html'));
+});
 
 module.exports = app;
 
