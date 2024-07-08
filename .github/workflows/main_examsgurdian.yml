@@ -23,12 +23,12 @@ jobs:
 
       - name: Install npm packages - backend
         run: |
-          cd ExamsWF/backend
+          cd backend
           npm install       
       
       - name: Install npm packages, build then copy files - frontend
         run: |
-          cd ExamsWF/frontend
+          cd frontend
           npm install
           npm run build
           cp -r ./build ../backend/public
@@ -36,7 +36,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: ExamsWF
+          name: examsgurdian-app
           path: ExamsWF/backend
 
   deploy:
@@ -52,7 +52,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: ExamsWF
+          name: examsgurdian-app
       
       - name: Login to Azure
         uses: azure/login@v1
