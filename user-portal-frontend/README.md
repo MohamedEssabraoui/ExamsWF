@@ -72,3 +72,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 sysadmin  systemadmin
 teacher:kamal@gmail.com  12345kamal
 moss@gmail.com 12345mos
+string to connect to atlas mongodb/* mongodb+srv://mohamedessabraoui:12345@Simo@cluster0.3tnvhbq.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0 */
+
+string to local mongodb : mongodb://localhost:27017/Online-Exam-Portal
