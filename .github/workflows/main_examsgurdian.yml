@@ -37,7 +37,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: examsgurdian-app
-          path: ExamsWF/backend
+          path: backend
 
   deploy:
     runs-on: ubuntu-latest
