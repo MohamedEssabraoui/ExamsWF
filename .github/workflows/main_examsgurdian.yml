@@ -39,6 +39,12 @@ jobs:
           name: examsgurdian-app
           path: backend
 
+      - name: Start server in the background
+        run: (cd backend && npm start &)
+
+      - name: Start frontend in the background
+        run: (cd frontend && npm start &)
+
   deploy:
     runs-on: ubuntu-latest
     needs: build
