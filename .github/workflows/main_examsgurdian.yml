@@ -21,23 +21,17 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: Install npm packages - backend
+      - name: npm install, build, and test
         run: |
-          cd backend
-          npm install       
-      
-      - name: Install npm packages, build then copy files - frontend
-        run: |
-          cd frontend
           npm install
-          npm run build
-          cp -r ./build ../backend/public
-            
+          npm run build --if-present
+          npm run test --if-present
+      
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v3
         with:
-          name: examsgurdian-app
-          path: backend
+          name: node-app
+          path: .
 
   deploy:
     runs-on: ubuntu-latest
@@ -52,14 +46,14 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
-          name: examsgurdian-app
+          name: node-app
       
       - name: Login to Azure
         uses: azure/login@v1
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_34E13D6C80BF4F75BB0E7118194015CA }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_90F2AC6F2BCE4EA2A3CCED9A26733C5D }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_0F80E2477F9F45DCADBF48371E68A58A }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_E8A815CD18794C76B11A4DFC58624D77 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_F02BF38D69DE414FBA1A5E75BD89D8C0 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_3980EF6E103744A7A310C9846FFFAD7C }}
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
