@@ -18,21 +18,21 @@ let options = {
 if(process.env.NODE_ENV==="docker") {
   options.authSource = config.get('mongodb.authDB')
 }
-const Db = process.env.ATLAS_URI
+/* const Db = process.env.ATLAS_URI
 mongoose.connect(Db,options).then(()=>{
   console.log("connected to mongoDB");
   adminService.addAdminIfNotFound();
   
 }).catch((err)=>{
   console.log("Error connecting to database",err);
-})
-/* mongoose.connect(config.get('mongodb.connectionString'),options).then(()=>{
+}) */
+ mongoose.connect(config.get('mongodb.connectionString'),options).then(()=>{
     console.log("connected to mongoDB");
     adminService.addAdminIfNotFound();
     
 }).catch((err)=>{
     console.log("Error connecting to database",err);
-}) */
+}) 
 
 
 module.exports=mongoose;
